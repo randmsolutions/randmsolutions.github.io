@@ -1,0 +1,87 @@
+/* Gemeinsames Aussehen aller Seiten von R&M Solutions (übernommen von der Datenschutzseite der PDF-App) */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #1c1f24;
+  --muted: #5a626d;
+  --line: #dfe3e8;
+  --panel: #f4f6f8;
+  --accent: #0b5cad;
+  --mark-bg: #ffe08a;
+  --mark-text: #3d2c00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171b;
+    --text: #e8eaed;
+    --muted: #a4abb5;
+    --line: #333941;
+    --panel: #1e2227;
+    --accent: #7db8f5;
+    --mark-bg: #6b5200;
+    --mark-text: #fff1c7;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171b;
+  --text: #e8eaed;
+  --muted: #a4abb5;
+  --line: #333941;
+  --panel: #1e2227;
+  --accent: #7db8f5;
+  --mark-bg: #6b5200;
+  --mark-text: #fff1c7;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  overflow-wrap: break-word;
+}
+main { max-width: 46rem; margin: 0 auto; padding: 2rem 16px 4rem; }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 .25rem; }
+h2 { font-size: 1.2rem; line-height: 1.3; margin: 2.25rem 0 .5rem; }
+p, ul { margin: 0 0 .85rem; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: .35rem; }
+a { color: var(--accent); }
+.meta { color: var(--muted); margin-bottom: 1.5rem; }
+.box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+}
+.box > :last-child { margin-bottom: 0; }
+.box-title { font-weight: 650; margin-bottom: .4rem; }
+address { font-style: normal; }
+mark {
+  background: var(--mark-bg);
+  color: var(--mark-text);
+  padding: 0 .2em;
+  border-radius: 3px;
+}
+table { width: 100%; border-collapse: collapse; margin: .5rem 0 1rem; font-size: .95rem; }
+th, td { text-align: left; vertical-align: top; padding: .6rem .7rem .6rem 0; border-bottom: 1px solid var(--line); }
+th { font-weight: 650; }
+td p:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tr { border-bottom: 1px solid var(--line); padding: .6rem 0; }
+  td { border: 0; padding: .25rem 0; }
+  td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--muted);
+    font-size: .8rem;
+    font-weight: 650;
+  }
+}
+nav.top { margin-bottom: 1.5rem; font-size: .95rem; }
+nav.top a { margin-right: 1rem; }
+footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1rem; }
+footer a { margin-right: 1rem; }

@@ -1,0 +1,2 @@
+# app-ads.txt von R&M Solutions - autorisierte Verkaeufer fuer Werbung in unseren Apps
+google.com, pub-7960037953499587, DIRECT, f08c47fec0942fa0
