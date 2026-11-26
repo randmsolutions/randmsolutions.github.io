@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dein Schulden und Haushaltsplaner</title>
+<meta name="description" content="Schulden im Blick. Budget im Griff. Kostenlos für Android und iPhone.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="app-icon.png">
+<link rel="apple-touch-icon" href="app-icon.png">
+<link rel="canonical" href="https://randmsolutions.github.io/schulden-haushaltsplaner/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dein Schulden und Haushaltsplaner">
+<meta property="og:description" content="Schulden im Blick. Budget im Griff. Kostenlos für Android und iPhone.">
+<meta property="og:url" content="https://randmsolutions.github.io/schulden-haushaltsplaner/">
+<meta property="og:image" content="https://randmsolutions.github.io/schulden-haushaltsplaner/app-icon.png">
+<!--
+  Smart-Link für die Bio (Instagram, TikTok, YouTube …):
+  Android → Google Play, iPhone/iPad → App Store, Computer → Seite mit beiden Buttons.
+  Zum Ansehen ohne Weiterleitung (auch am Handy): …/schulden-haushaltsplaner/?ansehen
+  Keine Cookies, kein Tracking, keine externen Schriften.
+-->
+<script>
+  // ===== Hier die Store-Links eintragen =====
+  var PLAY_STORE = 'https://play.google.com/store/apps/details?id=de.randmsolutions.schuldenundhaushaltsplaner';
+  var APP_STORE = '';   // App-Store-Link, sobald die iPhone-App live ist, z. B. 'https://apps.apple.com/de/app/…/id123456789'
+
+  function plattform(ua, touchPunkte) {
+    if (/android/i.test(ua)) return 'android';
+    if (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && touchPunkte > 1)) return 'ios';   // iPad meldet sich als Mac
+    return 'andere';
+  }
+  var GERAET = plattform(navigator.userAgent, navigator.maxTouchPoints || 0);
+  var ZIEL = GERAET === 'android' ? PLAY_STORE : (GERAET === 'ios' ? APP_STORE : '');
+  if (ZIEL && location.search.indexOf('ansehen') === -1) {
+    document.documentElement.className = 'weiter';
+    location.replace(ZIEL);
+  }
+</script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: #000; color: #fff;
+    font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh; min-height: 100dvh; overflow-x: hidden; position: relative;
+  }
+  .aurora { position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(60vmax 60vmax at 15% 5%, rgba(124,58,237,0.40), transparent 60%),
+      radial-gradient(55vmax 55vmax at 95% 25%, rgba(37,99,235,0.32), transparent 60%),
+      radial-gradient(45vmax 45vmax at 85% -5%, rgba(180,83,9,0.26), transparent 60%); }
+  main { position: relative; z-index: 1; width: 100%; max-width: 34rem; padding: 3rem 16px 2rem; text-align: center; flex: 1; }
+  .icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 18px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08); }
+  h1 { font-size: 2rem; line-height: 1.15; letter-spacing: -0.02em; margin: 1.4rem 0 .5rem; font-weight: 800; }
+  .tag { color: #C4C4CC; margin: 0 0 1.2rem; font-size: 1.1rem; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 2rem; padding: 0; list-style: none; }
+  .chips li { padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); font-size: .9rem; color: #E4E4E7; font-weight: 600; }
+  .cta { font-weight: 800; font-size: 1.25rem; margin: 0 0 1rem; }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; }
+  .badges a { display: inline-block; line-height: 0; border-radius: 12px; transition: transform .15s ease; }
+  .badges a:hover, .badges a:focus-visible { transform: scale(1.04); }
+  .badges a:focus-visible { outline: 3px solid #8FA6FF; outline-offset: 4px; }
+  /* Gleiche sichtbare Höhe: Google-PNG hat oben/unten transparenten Rand (192 von 250 px sichtbar) */
+  .badge-google { height: 73px; margin: -8.5px 0; }
+  .badge-apple { height: 56px; }
+  /* Handy: beide Buttons nebeneinander (links Google Play, rechts App Store) */
+  @media (max-width: 440px) {
+    .badges { flex-wrap: nowrap; gap: 10px; }
+    .badge-google { height: 62.5px; margin: -7.25px 0; }
+    .badge-apple { height: 48px; }
+    .soon { font-size: .8rem; padding: 8px 10px; }
+  }
+  .soon { color: #A1A1AA; font-size: .95rem; padding: 12px 16px; border: 1px dashed rgba(255,255,255,0.25); border-radius: 12px; line-height: 1.3; }
+  .sub { color: #A1A1AA; margin: 1.1rem 0 0; font-size: .95rem; }
+  .hinweis { display: none; color: #C4C4CC; margin: 0 0 1.5rem; }
+  .weiter .hinweis { display: block; }
+  footer { position: relative; z-index: 1; color: #8E8E93; font-size: .85rem; padding: 1.5rem 16px 2rem; }
+  footer a { color: #A1A1AA; margin: 0 .6rem; }
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<main>
+  <p class="hinweis">Du wirst zum Store weitergeleitet …</p>
+  <img class="icon" src="app-icon.png" alt="" width="120" height="120">
+  <h1>Dein Schulden und Haushaltsplaner</h1>
+  <p class="tag">Schulden im Blick. Budget im Griff.</p>
+  <ul class="chips"><li>Kostenlos</li><li>Ohne Abo</li><li>Ohne Bankverbindung</li></ul>
+  <p class="cta">Jetzt kostenlos laden</p>
+  <div class="badges">
+    <a id="link-google" href="https://play.google.com/store/apps/details?id=de.randmsolutions.schuldenundhaushaltsplaner" aria-label="Jetzt bei Google Play">
+      <img class="badge-google" src="../badges/google-play-de.png" alt="Jetzt bei Google Play"></a>
+    <a id="link-apple" href="#" aria-label="Laden im App Store" hidden>
+      <img class="badge-apple" src="../badges/app-store-de.svg" alt="Laden im App Store"></a>
+    <span id="apple-bald" class="soon">iPhone-Version<br>in Kürze im App Store</span>
+  </div>
+  <p class="sub">Für Android und iPhone</p>
+</main>
+<footer><a href="/impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></footer>
+<script>
+  // Buttons mit den Links oben verbinden. Den App-Store-Button gibt es erst, wenn APP_STORE eingetragen ist.
+  document.getElementById('link-google').href = PLAY_STORE;
+  if (APP_STORE) {
+    var a = document.getElementById('link-apple');
+    a.href = APP_STORE; a.hidden = false;
+    document.getElementById('apple-bald').hidden = true;
+  }
+</script>
+</body>
+</html>
